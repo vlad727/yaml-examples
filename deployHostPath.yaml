@@ -21,12 +21,16 @@ spec:
         ports:
         - containerPort: 8080
         volumeMounts:
-        - mountPath: /app
+        - mountPath: /config
           name: audit
       volumes:
       - name: audit
         hostPath:
-          path: /etc/kubernetes/manifests/kube-apiserver.yaml
+          path: /etc/kubernetes/manifests/
+      tolerations:
+        - effect: NoExecute
+          operator: Exists
+      nodeName: <node-name> 
        
   
 
